@@ -79,3 +79,5 @@ commit başına sadece tek satır log gösterin
 git config format.pretty oneline
 interaktif ekleme kullanın
 git add -i
+
+link:http://rogerdudler.github.io/git-guide/index.tr.html
