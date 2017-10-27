@@ -1,0 +1,233 @@
+http://vcs.atspace.co.uk/2012/11/05/which-repository-is-more-compact-git-or-svn/
+https://hanakamer.com/bu-yaz%C4%B1da-git-versiyon-kontrol-sisteminin-yap%C4%B1-ta%C5%9Flar%C4%B1ndan-ve-temel-%C3%A7al%C4%B1%C5%9Fma-prensibinden-bahsedece-b3be93158541
+
+git nedir?
+
+Git Nedir?
+Git bir versiyon kontrol sistemidir. Yapacaðýnýz projelerin adým adým versiyonlarýný alarak daha sonra ihtiyaç halinde, aldýðýnýz bu versiyonlara geri dönebilirsiniz.
+
+Git yazýlýmý, Linux çekirdiðini oluþturan Linus Torvalds tarafýndan yazýlmýþtýr. Açýk kaynak kodlu özgür yazýlým ürünüdür. Herhangi bir ücret ödemeden kullanabilirsiniz.
+
+
+neden ihtiyaç duyarýz?
+-mevcut projeye birþey eklemek yada çýkarmak için projenin kopyasý üzerinden devam edilir. proje geliþtirme bu þekilde ilerler. Git buradaki karýþýklýðý profesyonel þekilde düzenlememizi saðlar.
+
+--
+bir proje dizininde eksi ve yeni versiyýnlar arasýndaki geçiþ daha kolay yapýlýr.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------
+
+2.KURULUMU
+git download (git-scm.com)
+
+git gui, git bash, git cmd
+
+linux için:
+-sudo apt-get install git
+-git --version (kurulumun gerçekleþip gerçekleþmediðine bakarýz)
+
+3.GIT YAPILANDIRMASI
+
+git'te kullanýcý tanýmlanmalýdýr.
+
+git config --global user.name "siyarsimsek"
+git config --global user.email "siyarsimsek@gmail.com"
+git config --global user.name --> kullanýcýyý kontrol edebiliriz.
+git config --global user.email --> email'i kontrol edebiliriz.
+
+
+4.GIT PROJESI OLUSTURMA
+iþe yarar komutlar
+pwd, ls, cd
+
+
+masaüstünde proje_dizini açýldý.
+"git init";
+bu komut ile proje_dizini bir git projesi olur. ls -al ile görüntülenir.(gizli dosya formatýndalar)
+bu dosyalar projenin takibi ve kayýtý için gereklidir.
+
+--------------
+6.COMMIT & LOG
+
+projeleri repository'e ekleme soyalarý.
+
+~/Desktop
+mkdir myproject
+mv 26.09.2017 ~/Desktop/myproject
+cd myproject
+
+-git init
+-git add . --> mevcutu git repository'nin geçici alanýna taþýr
+-git commit -m "ilk commit" -> alýnan versiyonun niteliðini açýklamalý
+
+-git log --> alýnan tüm versiyonlarý listeler commit'ler dahil kullanýcý vs
+
+-*-*-
+git status --> projede deðiþiklikler olduðunda bunlarý gösterir. çalýþma dizini ile repository arasýnda fark yoksa herhagi birþey göstemersi beklenmez.
+(AYRICA; git status yazýldýðýnda yukarýda ne yapabileceðimize iliþikin uyarýlar da olur.)
+*burada hesap.py dosyasýný myproject dizininde oluþturduðumuzda; commit edilecek dosya olmadýðýný, geçiþ bölgesine eklenecek dosya olduðunu belirtir.
+
+-git add hesap.py (git add . demememizin sebebi tüm dosyalarý bir daha yükleme ihtiyacý olamamasýdýr.
+-git log ile tekrar bakýlabilir.
+
+
+*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+ÝÞ AKIÞI
+
+3 bölümden oluþur
+
+working directory - staging area - git repository
+çalýþma dizini    - geçiþ bölgesi - git deposu
+     ----- add ------>    ----- commit ---->
+
+iki dosya oluþturup biri geçiþ diðeri de repository'e gönderildiðinde ne olur ona bakabiliriz.
+
+
+
+*---*--*--*-*-**---**--*-**--*-*-*
+
+deðiþiklikler olduðunda;
+git status ile bunu görebiliriz.
+
+-"git diff" ile deðiþiklikler "+" ve yeþil'le belirtilir.
+bu commit edilirse deðiþiklikler kayýt edilir.
+
+--dosyalarda birþeyler silindiðinde 
+(git diff x -> x ile ilgili deðiþikliklerdir.)
+
+
+*-*-
+git diff; working directory ile staging area arasýndaki farklarý verir.
+
+git diff --staged; staging area ile repository arasýndaki farkalrý verir.
+
+----------------------
+dosya silme;
+manuel silme
+git komutu ile silme
+
+-manuel silindikten sonra add/rm ile staged area'ya iletebilirsiniz.
+
+-git rm carpma.py
+-git commit -m "sildik"
+
+(bash üzerinden gidilirse yukarýdaki iki komut yeterli. dizine gidip elle silmeye gerek yoktur.)
+
+þimdi içinde dosyalar olan klasörü silelim
+mkdir sil
+touch 1.py 2.txt 3.txt
+önce git deposuna göndermek gerek -> git add .
+git commit -m "klasor oldu"
+
+þimdi silelim
+
+git rm -r sil/
+git commit -m "dosya silindi"
+
+----------------------------------------
+
+dosya isimlendirme ve taþýma;
+git mv 2.txt iki.txt; direk git üzerinde isim deðiþtiririz ekstradan git add . ihtiyac yok.
+(ctr+shift+c/ctrl+shift+v)
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+deðiþiklikleri geri alma
+
+çalýþma dizininde olursak;
+
+projede  bir dosya içeriði deðiþti diyelim.
+git checkout -- index ile bakarýz. 
+dosyayý silsek dahi ayný komut ile geri getiririz.
+
+*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+staged area'ya gönderilen dosyayý getirme;
+a.py üzerinde deðiþklik yaptýk;
+git add a.py dedik
+þu anda deðiþiklik yapýlan a.py staged area'ya geldi.
+burada - git reset HEAD a.py dersek dizine gelir
+bir üst taraftaki gibi git checkout -- a.py dersek
+herþey eski haline döner.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+versiyon deðiþtirme
+
+v1 > v2 > v3
+
+v3'ten v2'ye geçiþte v2'nin kopyasý alýnmýþ olur.
+
+
+git checkout (gidilmesi istenilen versiyon hash'i) -- .
+(. -> tüm dosylarýn istenilen versiyondakþ haline dönüþ istenir.)
+kodun ilk 7 hanesi de olur.
+
+--------------------------------------------------------------github
+--------------------------------------------------------------
+
+git yazýlýmý ile entegre olmuþ bir depolama alanýdýr. gitlab/
+
+git baðlantýsýný o dizine eklemek gerek;
+>github
+git remote add baðlantýnýntakmaadý https://github.com/siyarsimsek/github.git
+git remote ---> baðlantýnýn eklenip eklenmediðine bakar
+git push -u baðlantýnýntakmaadý master 
+
+-*-**-
+.gitignore -> git tarafýndan takip edilmesini istemediðiniz dosyalarýnýzý saklamak içindir. git'e gönderip veritabanýný görüntülemez.
+touch verii
+cat >> .gitignore
+(hangi dosyalarý saklamak istersek onlarý yazarýz)
+git status yazýlýrsa verii dosyasý gözükmez.
+
+önce gitignore'e yazýn dosyanýzý
+
+*-*-*
+mkdir belge
+touch dosya{1..5}.html
+
+
+*--***-*-**--**-*-*-
+branch
+master'ýn kopyalanmasýdýr aslýnda
+
+git branch yenidal
+git branch --all
+git checkout yenidal --> yenidal'a geçtik
+git checkout master yenidal --> aradaki farklarý gösterir
+git checkout master -> master'a geçtik
+git merge yenidal --> yenidal ile birleþti
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
