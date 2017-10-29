@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "isminizi giriniz:"
+echo "isminizi giriniz :"
 read name
 
 echo isminizi $name olarak girdiniz...
