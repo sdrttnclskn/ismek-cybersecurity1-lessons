@@ -10,19 +10,19 @@ echo
 
 #Sistem bilgilerimizi yazdıralım
 
-sistem_bilgisi='uname -a &'
+sistem_bilgisi=`uname -a &`
 
 echo "Sistem bilgilerinizi:$sistem_bilgisi"
 
 sleep 5 # 5 saniyelik bir bekleme(uyuma)
 
-calisma_dizini='pwd &' # Aktif çalışma dizinimiz
+calisma_dizini=`pwd &` # Aktif çalışma dizinimiz
 
 echo "Aktif çalışma dizini: $calisma_dizini"
 
 #"man" komutunun nerede olduğunu ayrıntılu olarak gösterelim.
 
-komut_nerede='whereis man &'
+komut_nerede=`whereis man &`
 
 echo $komut_nerede
 
@@ -44,7 +44,7 @@ ls -la
 
 #olduğunu ve olduğu satırı yazdıralım
 
-_degisken='ls | grep -R "dort" &'
+_degisken=`ls | grep -R "dort" &`
 
 echo
 
@@ -84,7 +84,7 @@ echo # Boş bir satır bırakma
 
 # yazdıralım
 
-_degisken2='expr 66 + 35 &'
+_degisken2=`expr 66 + 35 &`
 
 echo "Toplama:$_degisken2"
 
@@ -108,7 +108,7 @@ sleep 3 # 3 saniyelik bir bekleme(uyuma)
 
 # "/etc/passwd" dosyasında kaç satır olduğunu "grep" ile yazdıralım.
 
-satir_sayisi='grep -c "^" /etc/passwd &'
+satir_sayisi=`grep -c "^" /etc/passwd &`
 
 echo " \"etc/passwd\" dosyasındaki satır sayısı: $satir_sayisi"
 
