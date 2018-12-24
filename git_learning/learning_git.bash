@@ -11,7 +11,7 @@
 4-) uzaktaki depoyu kendi yerel depomuzla birleştirmek.
 
 *  birincisi github platformunda kendi hesabımızda repostory oluşturuyoruz.
-*  uzak depoyu tanımlak. 'git remote add origin hhttps://github.com/sdrttnclskn/ismek-cybersecurity1-lessons.git  origin : köken. orjinal uzak depomuzun adı.
+*  uzak depoyu tanımlamak. 'git remote add origin hhttps://github.com/sdrttnclskn/ismek-cybersecurity1-lessons.git  origin : köken. orjinal uzak depomuzun adı.
 * 'git push' ile itebiliriz. nereye,neyi  yüklüyoruz.  -git push origin master-
 
 
